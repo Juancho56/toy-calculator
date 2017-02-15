@@ -1,11 +1,13 @@
-function calcApp() {
+// function calcApp() {
     let calcForm = document.querySelector('#calc-form')
+    console.log(calcForm);
     let display = document.querySelector('#display')
     let currOperand = ''
     let operand1 = 0;
     let operand2 = 0;
     let operator = '';
     let firstOperand = true;
+
     function processNumber(elementId) {
         const currNumber = elementId.substr(1)
         currOperand += currNumber;
@@ -31,30 +33,45 @@ function calcApp() {
         switch (operator) {
             case 'modadd':
                 return '' + (operand1 + operand2)
+
             case 'modsubtract':
                 return '' + (operand1 - operand2)
+
             case 'modmultiply':
                 return '' + (operand1 * operand2)
+
             case 'moddivide':
                 return '' + (operand1 / operand2)
+
+            case 'modraiz':
+                return '' + Math.sqrt(operand1)
         }
     }
 
     function onCalcFormChange(event) {
         console.log('event=', event);
         const buttonId = event.target.id
+
         if (buttonId.startsWith('a')) {
             processNumber(buttonId);
-        } else if (buttonId.startsWith('mod')) {
+        }
+        else if (buttonId.startsWith('mod')) {
             captureCurrentNumber();
             operator = buttonId
-        } else if (buttonId === 'equalequals') {
+
+        }
+        else if (buttonId === 'equalequals') {
             captureCurrentNumber();
             display.innerHTML = doOperation(operator, operand1, operand2);
+        }
+        else if (buttonId === 'resetealo') {
+            display.innerHTML = '';
+            operand1 = 0;
+            operand2 = 0;
         }
     }
 
     calcForm.addEventListener('change', onCalcFormChange)
-};
+// };
 
-calcApp();
+// calcApp();

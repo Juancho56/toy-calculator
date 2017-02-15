@@ -7,8 +7,9 @@
 
 #display {
   margin: 10px 0;
-  padding: 10px;
-  font-size: 2em;
+  width: 100%;
+  height: 50px;
+  font-size: 1em;
   font-family: sans-serif;
   background: var(--bg-display);
   color: var(--color-display);
@@ -18,10 +19,6 @@
   align-self: flex-end;
   border-radius: 10px;
 }
-#display::after {
-  content: '_';
-}
-
 
 input {
   display: none;
